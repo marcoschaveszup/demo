@@ -15,7 +15,7 @@ class CarServiceImpl : CarService {
     lateinit var carRepository: CarRepository
 
     override fun save(car: Car): Car {
-        carRepository.findByLicensePlate(car.licensePlate) ?: throw CarAlreadyExistsException(carAlreadyExists)
+        if (carRepository.findByLicensePlate(car.licensePlate) != null) throw CarAlreadyExistsException(carAlreadyExists)
         return carRepository.save(car)
     }
 

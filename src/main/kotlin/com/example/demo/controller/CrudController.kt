@@ -18,9 +18,7 @@ class CarController {
     }
 
     @GetMapping("/car/{licensePlate}")
-    fun getCar(@PathVariable licensePlate: String): Car? {
-        return carService.getByLicensePlate(licensePlate)
-    }
+    fun getCar(@PathVariable licensePlate: String): Car? = carService.getByLicensePlate(licensePlate)
 
     @PostMapping("/car")
     fun saveCar(@RequestBody car: Car): Car {
